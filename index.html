@@ -172,6 +172,7 @@
       ];
       document.addEventListener("DOMContentLoaded", function () {
         const menuContainer = document.getElementById("subject-menu");
+        // --- 1. Function to Generate the Menu ---
         function generateMenu() {
           chaptersData.forEach((chapter) => {
             const dropdownDiv = document.createElement("div");
@@ -192,12 +193,13 @@
             menuContainer.appendChild(dropdownDiv);
           });
         }
+        // --- 2. Function to Add Event Listeners ---
         function attachEventListeners() {
-          const allDropdownBtns = menuContainer.querySelectorAll(".dropdown-btn");
+          const allDropdownBtns =
+            menuContainer.querySelectorAll(".dropdown-btn");
           allDropdownBtns.forEach((btn) => {
             btn.addEventListener("click", function (event) {
               const currentContent = this.nextElementSibling;
-              const isAlreadyOpen = this.classList.contains("active");
               allDropdownBtns.forEach((otherBtn) => {
                 if (otherBtn !== this) {
                   otherBtn.classList.remove("active");
@@ -218,8 +220,20 @@
             }
           });
         }
+        // --- 3. Initialize the Menu ---
         generateMenu();
         attachEventListeners();
+        // Add the registration elements
+        const registrationText = document.createElement("p");
+        registrationText.className = "registration-text";
+        registrationText.textContent = "বিগত বছরগুলোর মেডিকেল এডমিশন টেস্টে প্রায় ১০০% প্রশ্ন বিগত বছরের প্রশ্ন ও অনুশীলনী থেকে হুবুহু কমন এসেছে। সকল অধ্যায়ের এই ধরণের প্রশ্ন অনুশীলন করতে রেজিষ্ট্রেশন করো আজই!";
+        menuContainer.appendChild(registrationText);
+
+        const registrationButton = document.createElement("a");
+        registrationButton.className = "registration-button";
+        registrationButton.textContent = "রেজিষ্ট্রেশন করো";
+        registrationButton.href = "#";
+        menuContainer.appendChild(registrationButton);
       });
     </script>
   </body>
